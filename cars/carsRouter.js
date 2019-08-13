@@ -40,4 +40,28 @@ router.post('/cars', async (req, res) => {
     }
 })
 
+router.delete('/cars/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        const deletedData = await db('cars').where('id', '=', id).del()
+        res.status(200).json(deletedData)
+    } catch (error) {
+        res.status(500).json({ error: 'Could not delete car.'})
+    }
+})
+
+router.put('/cars/:id', async (req,res) => {
+    try {
+        const { id } = req.params
+        const carData = req.body
+        const editCar = await db('cars').where('id', '=', id).update(carData)
+
+        res.status(200).json(editCar)
+    } catch (error) {
+        res.status(400).json({ error: 'Could not edit car.'})
+    }
+})
+
+
+
 module.exports = router;

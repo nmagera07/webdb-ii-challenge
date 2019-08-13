@@ -4,10 +4,11 @@ exports.seed = function(knex) {
   return knex('cars').truncate()
     .then(function () {
       // Inserts seed entries
-      return knex('cars').insert([
-        {VIN: '12345'},
-        {make: 'Ford'},
-        {model: 'F-150'}
-      ]);
+      return knex('cars').insert({
+        VIN: '12345',
+        make: 'Ford',
+        model: 'F-150',
+        mileage: '100,000'
+      });
     });
 };

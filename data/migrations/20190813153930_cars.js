@@ -9,6 +9,7 @@ exports.up = function(knex) {
       tbl.string('mileage', 500000)
       tbl.string('transmissionType', 50)
       tbl.string('titleStatus', 50)
+      tbl.foreign('salePrice').references('sales.salesPrice')
   })
 };
 
